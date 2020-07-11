@@ -1,6 +1,101 @@
-$primary-color: #444;
+$primary-color: rgb(77, 76, 76);
+$secondary-color: rgb(121, 38, 38);
+$show-home-image: true;
+$home-image: url(../image/background.jpg);
+$background-opacity: 0.8;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin ease-out {
+  transition: all 0.5s ease-out;
+}
+
+@mixin background {
+  @if $show-home-image {
+    &#bg-image {
+      background-image: $home-image;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+  }
+}
 
 body {
-  background-color: $primary-color;
+  // background-color: $primary-color;
   color: #fff;
+  height: 100%;
+  font-family: 'Segoe UI', Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1.5;
+  background-image: url(../image/background.jpg);
+  background-attachment: fixed;
+  background-size: 100% 100%;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba($primary-color, $background-opacity);
+    z-index: -1;
+  }
+}
+
+// Headings
+h1,
+h2,
+h3 {
+  font-weight: 400;
+
+  &.main-heading {
+    font-size: 6rem;
+  }
+
+  &.secundary-heading {
+    font-size: 2rem;
+    padding: 0.2rem 1rem;
+    background: rgba(lighten($primary-color, 2), 0.5);
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+header {
+  position: fixed;
+}
+
+.second-name {
+  color: $secondary-color;
+}
+
+main {
+  padding: 4rem;
+
+  .icons {
+    margin-top: 1rem;
+
+    a {
+      padding: 0.4rem;
+
+      &:hover {
+        color: $secondary-color;
+        @include ease-out();
+      }
+    }
+  }
+
+  &.home {
+    overflow: hidden;
+
+    h1 {
+      margin-top: 20vh;
+    }
+  }
 }
